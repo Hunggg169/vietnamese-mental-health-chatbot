@@ -1,0 +1,49 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Virtual environment
+venv/
+env/
+.venv/
+
+# Model AI (RẤT QUAN TRỌNG)
+*.pt
+*.pth
+*.bin
+*.h5
+*.ckpt
+
+# Dataset
+*.csv
+*.json
+*.zip
+*.tar.gz
+
+# Jupyter Notebook
+.ipynb_checkpoints/
+
+# Logs
+*.log
+
+# Environment variables
+.env
+
+# Node.js (nếu có)
+node_modules/
+npm-debug.log*
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+
+# Build / cache
+dist/
+build/
+.cache/

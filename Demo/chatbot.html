@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sign Language Master</title>
+    <link rel="stylesheet" href="./chatbot.css" />
+    <link
+      rel="stylesheet"
+      href="https://site-assets.fontawesome.com/releases/v6.5.2/css/all.css"
+    />
+
+    <link rel="shortcut icon" type="image/png" href="./image(1591).png" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    />
+  </head>
+
+  <body>
+    <!-- Sidebar -->
+    <div class="sidebar" id="sidebar">
+      <div class="logo">
+        <a href="#">
+          <img src="./image(1591).png" alt="Logo Sign Language Master" />
+        </a>
+      </div>
+
+      <div class="side-bar">
+        <i class="fa-solid fa-bars" id="btn"></i>
+        <div class="dong-side-bar">
+          <p>Đóng thanh bên</p>
+        </div>
+        <div class="mo-side-bar">
+          <p>Mở thanh bên</p>
+        </div>
+      </div>
+
+      <div class="sidebar-selection" id="sidebar-selection">
+        <div class="new-chat side-bar-chat">
+          <a href="./chatbot.html">
+            <i class="fa-solid fa-pen-to-square icon-chat"></i>
+            <p>Đoạn chat mới</p>
+          </a>
+        </div>
+        <div class="search-chat side-bar-chat">
+          <a href="#">
+            <i class="fa-solid fa-magnifying-glass icon-chat"></i>
+            <p>Tìm kiếm đoạn chat</p>
+          </a>
+        </div>
+        <div class="lib-chat side-bar-chat">
+          <a href="#">
+            <i class="fa-solid fa-photo-film icon-chat"></i>
+            <p>Thư viện</p>
+          </a>
+        </div>
+        <div class="folder-chat side-bar-chat">
+          <a href="#">
+            <i class="fa-solid fa-folder-plus icon-chat"></i>
+            <p>Dự án</p>
+          </a>
+        </div>
+        <span class="doan-chat">Đoạn chat</span>
+      </div>
+      <div class="sidebar-chat" id="sidebar-chat"></div>
+    </div>
+    <!-- Content -->
+    <div class="content" id="content">
+      <!-- Tiêu đề chào mừng -->
+      <h1 id="welcome-text">Hôm nay bạn có ổn không?</h1>
+
+      <!-- Vùng hiển thị hội thoại -->
+      <div class="chat-container" id="chat-container">
+        <!-- Tin nhắn sẽ được JS thêm vào đây -->
+      </div>
+
+      <!-- Thanh nhập và nút gửi -->
+      <div class="search-bar">
+        <div class="chat-input" id="input-area">
+          <input
+            type="text"
+            id="user-input"
+            placeholder="Hỏi bất kỳ điều gì..."
+            autocomplete="off"
+          />
+          <button id="add-btn" title="Thêm tệp hoặc tuỳ chọn khác">
+            <i class="fa-solid fa-plus icon1"></i>
+          </button>
+        </div>
+
+        <div class="icon-group">
+          <!-- Nút gửi tin nhắn -->
+          <i
+            class="fa-solid fa-paper-plane icon4"
+            id="send-btn"
+            title="Gửi"
+          ></i>
+          <!-- Icon mic và signal có thể dùng sau -->
+          <i class="fa-solid fa-microphone icon2" title="Ghi âm"></i>
+          <i class="fa-solid fa-signal icon3" title="Trạng thái kết nối"></i>
+        </div>
+      </div>
+    </div>
+    <!-- JS -->
+    <script src="./chatbot.js"></script>
+  </body>
+</html>

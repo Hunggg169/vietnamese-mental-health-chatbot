@@ -1,0 +1,831 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+  width: 100%;
+  font-family:
+    "Google Sans",
+    -apple-system,
+    system-ui,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    Roboto,
+    "Helvetica Neue",
+    Arial,
+    sans-serif;
+  background-color: #212121;
+  color: #fff;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.sidebar {
+  position: fixed;
+  width: 15%;
+  height: 100vh;
+  background-color: #181818;
+  color: #fff;
+  top: 0;
+  left: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: all 0.3s ease;
+  z-index: 5;
+  float: left;
+  padding-top: 20px;
+}
+
+/* Khi thu gọn sidebar */
+
+.sidebar.collapsed {
+  width: 50px;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Logo */
+
+.logo img {
+  width: 50px;
+  margin-top: 15px;
+}
+
+.sidebar.collapsed .side-bar i {
+  position: relative;
+  color: #fff;
+  top: -30px;
+  left: 40px;
+}
+
+/* Thanh menu */
+
+.side-bar {
+  display: flex;
+  align-items: center;
+}
+
+.side-bar i {
+  position: absolute;
+  font-size: 18px;
+  color: #fff;
+  cursor: pointer;
+  right: 10px;
+  top: 20px;
+}
+
+/* Tooltip mở / đóng sidebar */
+
+.dong-side-bar,
+.mo-side-bar {
+  position: fixed;
+  top: 40px;
+  background: #333;
+  color: #fff;
+  font-size: 14px;
+  padding: 5px 10px;
+  border-radius: 6px;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+  z-index: 2000;
+}
+
+.dong-side-bar {
+  left: 130px;
+  background: #fff;
+  color: #000;
+}
+
+.mo-side-bar {
+  background-color: #fff;
+  color: #000;
+  left: 85px;
+}
+
+/* Hiển thị tooltip khi hover */
+
+/* Ẩn text khi sidebar thu gọn */
+
+.sidebar.collapsed .side-bar-chat p {
+  display: none;
+}
+
+.side-bar-selection {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-top: 80px;
+  width: 100%;
+  z-index: 1;
+}
+
+.side-bar-chat {
+  position: relative;
+  width: 90%;
+  display: flex;
+  align-items: center;
+  margin: 10px 20px;
+  gap: 20px;
+  cursor: pointer;
+}
+
+.side-bar-chat a p {
+  font-size: 14px;
+  color: #fff;
+  margin-top: 20px;
+  margin-left: 20px;
+}
+
+.side-bar-chat a i {
+  position: relative;
+  font-size: 18px;
+  color: #fff;
+  min-width: 20px;
+  margin-left: -90px;
+  margin-top: 20px;
+}
+
+/* Danh sách đoạn chat */
+
+.chat-list {
+  width: 100%;
+  height: 500px;
+  display: flex;
+  flex-direction: column;
+  margin-top: 40px;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: #555 #222;
+  padding-left: 15px;
+}
+
+.chat-list h5 {
+  margin-bottom: 10px;
+  opacity: 0.4;
+}
+
+.side-bar-chat a {
+  display: flex;
+  flex-direction: row;
+}
+
+.chat-list span {
+  margin: 5px 0;
+  cursor: pointer;
+}
+
+.sidebar.collapsed .chat-list {
+  display: flex;
+}
+
+.content {
+  margin-left: 15%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 30px;
+  background-color: #212121;
+  transition: margin-left 0.3s ease;
+}
+
+.sidebar.collapsed ~ .content {
+  margin-left: 40px;
+}
+
+.content h1 {
+  font-size: 36px;
+  margin-bottom: 20px;
+  font-weight: 400;
+  text-align: center;
+  position: relative;
+  top: 30%;
+}
+
+.search-bar {
+  background-color: #2b2b2b;
+  display: flex;
+  align-items: center;
+  border-radius: 50px;
+  padding: 15px 20px;
+  width: 800px;
+  max-width: 90%;
+  margin: 0 auto 20px;
+  transition: all 0.3s ease;
+  position: relative;
+  top: -50%;
+}
+
+.search-bar:hover {
+  background-color: #3a3a3a;
+}
+
+.chat-input {
+  display: flex;
+  flex: 1;
+  position: relative;
+}
+
+.chat-input input {
+  border: none;
+  outline: none;
+  background: transparent;
+  font-size: 16px;
+  flex: 1;
+  color: #fff;
+  padding-left: 40px;
+}
+
+.chat-input button {
+  background: none;
+  border: none;
+  color: #bbb;
+  font-size: 16px;
+  cursor: pointer;
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.icon-group {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  align-items: center;
+}
+
+.icon1,
+.icon2,
+.icon3,
+.icon4 {
+  padding: 10px;
+  border-radius: 50%;
+  background-color: #333;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.icon1:hover,
+.icon2:hover,
+.icon3:hover,
+.icon4:hover {
+  background-color: #444;
+}
+
+.sidebar.collapsed .icon-chat {
+  position: relative;
+  left: 80px;
+}
+
+.chat-container {
+  flex-grow: 1;
+  overflow-y: auto;
+  margin: 15px 0;
+  padding: 15px;
+  /* background-color: #2a2a2a; */
+  border-radius: 10px;
+  /* border: 1px solid #333; */
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  height: 500px;
+}
+
+/* Search bar sau khi prompt */
+
+/* Ẩn h1 khi người dùng gửi tin nhắn */
+
+#content.chat-active #welcome-text {
+  display: none;
+}
+
+/* Giữ nguyên vị trí search-bar, chỉ đẩy xuống 400px */
+
+#content.chat-active .search-bar {
+  position: relative;
+  display: flex;
+  margin-bottom: -400px;
+  transition: margin-top 0.5s ease;
+}
+
+/* Ban đầu ẩn chat-container */
+
+.chat-container {
+  display: none;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+/* Hiển thị vùng chat */
+
+#content.chat-active .chat-container {
+  display: flex;
+  opacity: 1;
+  margin-bottom: 450px;
+}
+
+/* Hiển thị tooltip khi hover */
+
+.sidebar.collapsed .side-bar:hover .dong-side-bar,
+.sidebar:not(.collapsed) .side-bar:hover .mo-side-bar {
+  pointer-events: auto;
+  opacity: 1;
+}
+
+/* CHAT MESSAGE STYLES */
+
+.chat-container {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 20px;
+  overflow-y: auto;
+  height: 70vh;
+}
+
+/* Tin nhắn chung */
+
+.message {
+  max-width: 70%;
+  padding: 10px 14px;
+  border-radius: 12px;
+  line-height: 1.5;
+  word-wrap: break-word;
+  font-size: 15px;
+  animation: fadeIn 0.2s ease-in-out;
+}
+
+/* Tin nhắn người dùng (căn phải, màu nhạt xanh) */
+
+.user-message {
+  align-self: flex-end;
+  background-color: #303030;
+  color: #f2ffff;
+  border: 1px solid #212121;
+}
+
+/* Tin nhắn chatbot (căn trái, màu xám nhạt) */
+
+.bot-message {
+  align-self: flex-start;
+  color: white;
+}
+
+/* Hiệu ứng xuất hiện */
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(5px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.typing-dots {
+  display: inline-block;
+  width: 1em;
+  animation: blink 1s infinite steps(1, start);
+}
+
+@keyframes blink {
+  0%,
+  20% {
+    opacity: 0;
+  }
+  40%,
+  100% {
+    opacity: 1;
+  }
+}
+
+/* Sidebar Chat */
+
+.sidebar-chat {
+  display: flex;
+  position: fixed;
+  left: 15px;
+  top: 280px;
+  flex-direction: column;
+  flex: 1;
+  /* chiếm toàn bộ phần còn lại của sidebar */
+  overflow-y: auto;
+  /* thêm thanh cuộn dọc */
+  overflow-x: hidden;
+  /* ẩn cuộn ngang */
+  padding: 10px;
+  scrollbar-width: thin;
+  scrollbar-color: #444 transparent;
+}
+
+.sidebar-chat span {
+  font-size: 16px;
+  padding: 10px 0;
+}
+
+.sidebar-chat-span {
+  opacity: 1;
+}
+
+.sidebar-chat-span1 {
+  opacity: 0.5;
+}
+
+.sidebar.collapsed .sidebar-chat {
+  display: none;
+  transition: opacity 1s ease;
+}
+
+#sidebar-chat {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 10px;
+  margin-top: 10px;
+}
+
+.sidebar-item {
+  display: inline-block;
+  color: #fff;
+  padding: 8px 10px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.3s;
+  word-break: break-word;
+}
+
+.sidebar-selection {
+  margin-left: 20px;
+}
+
+.sidebar-selection span {
+  display: flex;
+  position: absolute;
+  left: 15px;
+  top: 270px;
+  opacity: 0.6;
+}
+
+.sidebar.collapsed .doan-chat {
+  display: none;
+}
+
+.doan-chat {
+  margin-top: 20px;
+}
+
+.sidebar.collapsed {
+  transform: translateX(-100%);
+}
+
+#content {
+  margin-left: 260px;
+  transition: margin-left 0.3s ease;
+}
+
+.sidebar.collapsed + #content {
+  margin-left: 0;
+}
+
+.dong-side-bar,
+.mo-side-bar {
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+}
+
+/* Xoa doan chat */
+
+.sidebar-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: white;
+  padding: 8px 10px;
+  border-radius: 8px;
+  margin-bottom: 6px;
+  opacity: 1;
+  transform: translateX(0);
+  transition: all 0.3s ease;
+}
+
+.sidebar-item.fade-in {
+  animation: fadeInSlide 0.4s ease forwards;
+}
+
+@keyframes fadeInSlide {
+  from {
+    opacity: 0;
+    transform: translateX(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.sidebar-item .options {
+  cursor: pointer;
+  font-size: 18px;
+  color: #aaa;
+  margin-left: 8px;
+}
+
+.sidebar-item-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+  color: #eee;
+  padding: 8px 10px;
+  border-radius: 6px;
+  margin-bottom: 5px;
+  transition: background 0.2s ease;
+}
+
+.sidebar-item-wrapper:hover {
+  background: #2b2b2b;
+}
+
+.sidebar-item {
+  flex: 1;
+  cursor: pointer;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.fa-ellipsis {
+  cursor: pointer;
+  font-size: 16px;
+  color: #aaa;
+  margin-left: 8px;
+  transform: rotate(90deg);
+  /* nằm ngang */
+}
+
+.fa-ellipsis:hover {
+  color: #fff;
+}
+
+/* POPUP MENU */
+
+.popup-menu {
+  position: absolute;
+  background: #232323;
+  color: #fff;
+  border-radius: 8px;
+  padding: 8px 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+  opacity: 0;
+  transform: scale(0.95);
+  transition:
+    opacity 0.2s ease,
+    transform 0.2s ease;
+  z-index: 9999;
+  width: 180px;
+}
+
+.popup-menu.show {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.popup-title {
+  font-size: 13px;
+  color: #ccc;
+  margin-bottom: 5px;
+  text-align: center;
+}
+
+.popup-menu button {
+  width: 100%;
+  text-align: left;
+  background: transparent;
+  border: none;
+  color: #fff;
+  padding: 6px 0;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: background 0.2s;
+}
+
+.popup-menu button:hover {
+  background: #333;
+}
+
+.delete-btn {
+  color: #ff4c4c;
+}
+
+.delete-btn:hover {
+  color: #ff0000;
+}
+
+/* ĐỔI TÊN */
+
+#rename-input {
+  width: 100%;
+  padding: 5px 8px;
+  border-radius: 6px;
+  border: none;
+  margin-bottom: 8px;
+  outline: none;
+}
+
+.rename-actions {
+  display: flex;
+  justify-content: space-between;
+}
+
+.rename-actions button {
+  flex: 1;
+  margin: 0 4px;
+  padding: 4px 0;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 13px;
+  transition: 0.2s;
+}
+
+#save-rename {
+  background: #0b5;
+  color: white;
+}
+
+#save-rename:hover {
+  background: #0a4;
+}
+
+#cancel-rename {
+  background: #444;
+  color: white;
+}
+
+#cancel-rename:hover {
+  background: #333;
+}
+
+.sidebar-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 6px 10px;
+  cursor: pointer;
+  border-radius: 6px;
+  transition: background 0.2s ease;
+}
+
+.sidebar-item i {
+  padding-left: 10px;
+}
+
+.sidebar-item:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.sidebar-menu {
+  font-size: 16px;
+  color: #ccc;
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+
+.sidebar-menu:hover {
+  color: white;
+}
+
+.chat-options-popup {
+  position: absolute;
+  background: #2b2b2b;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  padding: 8px;
+  display: flex;
+  flex-direction: column;
+  z-index: 9999;
+  animation: fadeIn 0.2s ease-in-out;
+}
+
+.chat-options-popup button {
+  background: none;
+  color: #fff;
+  border: none;
+  text-align: left;
+  padding: 6px 10px;
+  cursor: pointer;
+}
+
+.chat-options-popup button:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.popup-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10000;
+}
+
+.popup {
+  background: #2f2f2f;
+  color: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  width: 300px;
+  text-align: center;
+}
+
+.popup input {
+  width: 90%;
+  padding: 8px;
+  margin-top: 10px;
+  border: none;
+  border-radius: 5px;
+}
+
+.popup-actions {
+  margin-top: 15px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.popup-actions button {
+  background: #444;
+  border: none;
+  color: #fff;
+  padding: 6px 12px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.popup-actions button:hover {
+  background: #666;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Ẩn sidebar item khi sidebar đóng */
+
+.sidebar.collapsed .sidebar-item {
+  pointer-events: none;
+}
+
+/* Hiệu ứng fade in/out */
+
+.fade-out {
+  opacity: 0;
+  transform: translateX(-10px);
+  transition:
+    opacity 0.3s ease,
+    transform 0.3s ease;
+}
+
+.fade-in {
+  opacity: 1 !important;
+  transform: translateX(0);
+  transition:
+    opacity 0.3s ease,
+    transform 0.3s ease;
+}
+
+#content {
+  transition: opacity 0.3s ease;
+}
+
+#content[style*="display: none"] {
+  opacity: 0;
+}
+
+.chat-container {
+  margin-left: 200px;
+}

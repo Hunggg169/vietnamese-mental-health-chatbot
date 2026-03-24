@@ -1,0 +1,9 @@
+flask
+flask-cors
+torch
+transformers
+accelerate
+pymongo
+python-dotenv
+sentencepiece
+huggingface-hub

@@ -1,23 +1,24 @@
 Vietnamese Mental Health Chatbot (LLM Fine-tuning)
 Overview
 
-This project focuses on fine-tuning a large language model to build a Vietnamese mental health chatbot. The system is designed to provide supportive and context-aware responses using domain-specific data.
+This project focuses on fine-tuning a Large Language Model (LLM) to build a Vietnamese mental health chatbot. The system is designed to generate supportive, context-aware responses using domain-specific data and can be integrated into real-time web applications.
 
 Model
 Base Model: Falcon
 Fine-tuning Method: LoRA (Low-Rank Adaptation)
 Framework: PyTorch, Hugging Face Transformers
 
-Model: https://huggingface.co/HungHz/falcon-lora-merged
+Pretrained Model:
+https://huggingface.co/HungHz/falcon-lora-merged
 
 Features
 Vietnamese conversational chatbot
-Domain-specific responses (mental health support)
+Domain-specific responses for mental health support
 Lightweight fine-tuned model using LoRA
-Deployable for web-based interaction
+Real-time interaction via web integration
 Training Pipeline
 Data collection and preprocessing
-Formatting dataset for instruction tuning
+Instruction-format dataset preparation
 Fine-tuning using LoRA
 Merging LoRA weights into base model
 Evaluation and testing
@@ -25,23 +26,17 @@ Tech Stack
 Language: Python
 Frameworks: PyTorch, Transformers
 Techniques: LoRA fine-tuning
-Deployment: Web-based chatbot (Node.js / Flask)
+Deployment: Flask / Node.js
 Database: MongoDB
-Project Structure
-.
-├── data/
-├── training/
-├── inference/
-├── app/
-├── README.md
+
 Limitations
 Limited dataset size
-Model may generate inaccurate responses in complex cases
-Not a replacement for professional mental health support
+May produce inaccurate responses in complex scenarios
+Not intended to replace professional mental health services
 Future Improvements
-Larger and higher-quality dataset
-Better evaluation metrics
-Multi-turn conversation optimization
-Deployment optimization (latency & scaling)
+Expand dataset size and quality
+Improve evaluation metrics
+Optimize multi-turn conversations
+Enhance deployment performance and scalability
 Author
 Name: Quản Trọng Hùng
